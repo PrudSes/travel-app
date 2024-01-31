@@ -1,0 +1,23 @@
+specVersion: "3.1"
+metadata:
+  name: zrapprud
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-default_abap-trial-90d3bd86trial-dev
+          url: https://089b04d5-c34c-49d4-80b9-96228076931c.abap.us10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZRAP100_PRUD
+          package: ZTRAVEL_APP_PRUD
+          transport: TRLK913751
+        exclude:
+          - /test/
